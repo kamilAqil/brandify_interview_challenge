@@ -14,6 +14,21 @@ const theme = createMuiTheme({
         skyBlue : {
             main : '#57CDE7'
         },
+        grey : {
+            main : '#ADADAD'
+        },
+        warm: {
+            main : '#F6A51D'
+        },
+        warmer : {
+            main : '#DF8900'
+        },
+        warmest : {
+            main : '#EF7624'
+        },
+        black : {
+            main : '#000000'
+        }
     }
 })
 
