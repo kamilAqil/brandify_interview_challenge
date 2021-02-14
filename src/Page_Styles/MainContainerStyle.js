@@ -11,6 +11,11 @@ let MainContainerStyles = makeStyles((theme)=>createStyles({
     wireFrameBorderTwo: {
         border: `1px solid ${theme.palette.skyBlue.main}`
     },
+    pageContainer : {
+        width : '100vw',
+        height : '100vh',
+        display : 'flex'
+    }
 }))
 
 

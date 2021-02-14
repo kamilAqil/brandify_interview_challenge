@@ -7,6 +7,12 @@ import classNames from 'classnames'
 
 // styles
 import MainContainerStyles from './Page_Styles/MainContainerStyle.js'
+
+// store locator
+import StoreLocator from './Store_Locator/StoreLocator.js'
+
+
+
 function App() {
 
 
@@ -15,9 +21,9 @@ function App() {
   return (
     <Grid
       id='pageContainer'
-      // className={classNames(`${s.wireFrameBorderOne} ${s.pageContainer}`)}
+      className={classNames(`${s.wireFrameBorderOne} ${s.pageContainer}`)}
     >
-      Brandify Interview
+      <StoreLocator/>
     </Grid>
   );
 }
