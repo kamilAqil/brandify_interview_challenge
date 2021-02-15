@@ -8,7 +8,8 @@ let SearchCompStyles = makeStyles((theme)=>createStyles({
         height: '20px',
         width: '20px',
         marginRight : '5%',
-        color : 'red'
+        fill : 'inherit',
+       
     },
     ButtonBase : {
         // padding : '1%',
@@ -16,7 +17,7 @@ let SearchCompStyles = makeStyles((theme)=>createStyles({
         width : 'fit-content'
     },
     ButtonBaseSelected : {
-        color : 'red'
+      
     },
     buttonsRow: {
         display: 'flex',

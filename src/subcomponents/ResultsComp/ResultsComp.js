@@ -5,12 +5,42 @@ import React from 'react';
 import {Grid} from '@material-ui/core'
 import classNames from 'classnames'
 
+
+// subcomponents
+import MapComp from 'subcomponents/MapComp/MapComp.js'
+
+
 const ResultsComp = (props) => {
-    return (
-        <Grid>
-            Results Comp
-        </Grid>
-    );
+
+
+    let {
+        compShown
+    } = props
+
+    if(compShown.list){
+        // return list comp
+        return (
+            <Grid>
+               list
+            </Grid>
+        )
+    }else if(compShown.map){
+        // return map comp
+        return (
+            <Grid>
+                <MapComp/>
+            </Grid>
+        )
+    }else if(compShown.filter){
+        // return filter comp
+        return (
+            <Grid>
+               filter
+            </Grid>
+        )
+    }
+
+    
 }
  
 export default ResultsComp;

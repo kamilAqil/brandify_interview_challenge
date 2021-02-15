@@ -8,17 +8,22 @@ import SearchCompStyles from 'subcomponents/SearchComp/SearchCompStyles.js'
 
 import {useWidth} from 'subcomponents/SearchComp/SearchCompFunctions.js'
 
+// svgs
+import { ReactComponent as FilterIcon } from 'subcomponents/SearchComp/icons/filter.svg'
+
+import { ReactComponent as ListIcon } from "subcomponents/SearchComp/icons/list.svg"
+import {ReactComponent as MapIcon} from 'subcomponents/SearchComp/icons/map.svg'
+
 const SearchComp = (props) => {
 
     let s = SearchCompStyles()
     let width = useWidth()
 
-
-    const [buttonSelected, setbuttonSelected] = useState({
-        list : true,
-        map :  false,
-        filter : false
-    })
+    let { 
+        compShown,
+        setcompShown
+    } = props
+   
 
     useEffect(() => {
         
@@ -55,30 +60,55 @@ const SearchComp = (props) => {
                 >
                     {/* listButton */}
                     <ButtonBase
-                        className={buttonSelected.list?
+                        className={compShown.list?
                         classNames(`${s.wireFrameBorderOne} ${s.ButtonBaseSelected}`)
                         :
                         classNames(`${s.wireFrameBorderOne} ${s.ButtonBase}`)
                         }
+                        onClick={(e)=>{
+                            let compShownToSet = {
+                                list: true,
+                                map: false,
+                                filter: false
+                            }
+                            setcompShown(compShownToSet)
+                        }}
                     >
                         {/* icon */}
-                        <img id='buttonIcon' className={classNames(`${s.wireFrameBorderOne} ${s.buttonIcon}`)} src='/icons/list.svg' />
+                        {/* <img id='buttonIcon' className={classNames(`${s.wireFrameBorderOne} ${s.buttonIcon}`)} style={{fill:'inherit'}} src={listIcon} /> */}
+                        <ListIcon className={classNames(`${s.wireFrameBorderOne} ${s.buttonIcon}`)}/>
                         <Typography variant='button'>LIST</Typography>
                     </ButtonBase>
                     {/* mapButton */}
                     <ButtonBase
                         className={classNames(`${s.wireFrameBorderOne} ${s.ButtonBase}`)}
+                        onClick={(e)=>{
+                            let compShownToSet = {
+                                list: false,
+                                map: true,
+                                filter: false
+                            }
+                            setcompShown(compShownToSet)
+                        }}
                     >
                         {/* icon */}
-                        <img id='buttonIcon' className={classNames(`${s.wireFrameBorderOne} ${s.buttonIcon}`)} src='/icons/map.svg' />
+                       <MapIcon className={classNames(`${s.wireFrameBorderOne} ${s.buttonIcon}`)}/>
                         <Typography variant='button'>MAP</Typography>
                     </ButtonBase>
                     {/* filterButton */}
                     <ButtonBase
                         className={classNames(`${s.wireFrameBorderOne} ${s.ButtonBase}`)}
+                        onClick={(e)=>{
+                            let compShownToSet = {
+                                list: false,
+                                map: false,
+                                filter: true
+                            }
+                            setcompShown(compShownToSet)
+                        }}
                     >
                         {/* icon */}
-                        <img id='buttonIcon' className={classNames(`${s.wireFrameBorderOne} ${s.buttonIcon}`)} src='/icons/filter.svg' />
+                        <FilterIcon className={classNames(`${s.wireFrameBorderOne} ${s.buttonIcon}`)} />
                         <Typography variant='button'>FILTER</Typography>
                     </ButtonBase>
                 </Grid>

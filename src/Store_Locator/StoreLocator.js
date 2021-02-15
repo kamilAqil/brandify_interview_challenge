@@ -16,7 +16,11 @@ const StoreLocator = (props) => {
 
     let width = useWidth()
     
-
+    const [compShown, setcompShown] = useState({
+        list : true, 
+        map : false, 
+        filter : false
+    })
    
 
 
@@ -35,9 +39,9 @@ const StoreLocator = (props) => {
                 className={classNames(`${s.wireFrameBorderOne} ${s.storeLocatorContainer}`)}
             >
                 {/* searchComp */}
-                <SearchComp/>
+                <SearchComp compShown={compShown} setcompShown={setcompShown} />
                 {/* resultsComp */}
-                <ResultsComp/>
+                <ResultsComp compShown={compShown}/>
             </Grid>
         )
     }else{
