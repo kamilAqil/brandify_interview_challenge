@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 
 
 //third party
@@ -8,35 +8,44 @@ import classNames from 'classnames'
 
 // subcomponents
 import MapComp from 'subcomponents/MapComp/MapComp.js'
-
+import ListComp from 'subcomponents/ListComp/ListComp.js'
+import FilterComp from 'subcomponents/FilterComp/FilterComp.js'
 
 const ResultsComp = (props) => {
 
+    
 
     let {
-        compShown
+        compShown,
+        results,
+        setfilterOptions,
+        filterOptions
     } = props
+
+    useEffect(() => {
+        
+        return () => {
+            
+        }
+    }, [])
 
     if(compShown.list){
         // return list comp
         return (
-            <Grid>
-               list
-            </Grid>
+         
+               <ListComp results={results} />
+           
         )
     }else if(compShown.map){
         // return map comp
         return (
-            <Grid>
+            
                 <MapComp/>
-            </Grid>
         )
     }else if(compShown.filter){
         // return filter comp
         return (
-            <Grid>
-               filter
-            </Grid>
+            <FilterComp setfilterOptions={setfilterOptions} filterOptions={filterOptions} />
         )
     }
 

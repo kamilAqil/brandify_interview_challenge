@@ -1,21 +1,23 @@
 import { makeStyles, createStyles } from '@material-ui/core/styles';
 import theme from '../Material_Theme/Theme.js'
 
-let MainContainerStyles = makeStyles((theme)=>createStyles({
-    wireFrameBorderOne: {
-        border: `1px solid ${theme.palette.limeGreen.main}`
+let MainContainerStyles = makeStyles((theme) => createStyles({
+    pageContainer: {
+        display: 'flex',
+        height: 'fit-content',
+        minHeight: '100vh',
+        padding: '2%',
+        width: '100vw'
     },
-    wireFrameBorderThree: {
-        border: `1px solid ${theme.palette.beetRed.main}`
-    },
-    wireFrameBorderTwo: {
-        border: `1px solid ${theme.palette.skyBlue.main}`
-    },
-    pageContainer : {
-        width : '100vw',
-        height : '100vh',
-        display : 'flex'
-    }
+    // wireFrameBorderOne: {
+    //     border: `1px solid ${theme.palette.limeGreen.main}`
+    // },
+    // wireFrameBorderThree: {
+    //     border: `1px solid ${theme.palette.beetRed.main}`
+    // },
+    // wireFrameBorderTwo: {
+    //     border: `1px solid ${theme.palette.skyBlue.main}`
+    // }
 }))
 
 

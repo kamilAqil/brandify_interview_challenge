@@ -26,13 +26,19 @@ const MapComp = (props) => {
 
     if(width == 'xs' || width == 'sm' || width == 'md'){
         return (
-            <Grid>
+            <Grid
+                id='mapCompContainer'
+                className={classNames(`${s.wireFrameBorderOne} ${s.mapCompContainer}`)}
+            >
                 <img id='mapImage' className={classNames(`${s.wireFrameBorderOne} ${s.mapImage}`)} src='map_images/map_mobile.png' />
             </Grid>
         )
     }else{
         return (
-            <Grid>
+            <Grid
+            id='mapCompContainer'
+            className={classNames(`${s.wireFrameBorderOne} ${s.mapCompContainer}`)}
+            >
                 <img id='mapImage' className={classNames(`${s.wireFrameBorderOne} ${s.mapImage}`)} src='map_images/map_desktop.png' />
             </Grid>
         )

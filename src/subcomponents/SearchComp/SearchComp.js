@@ -44,6 +44,8 @@ const SearchComp = (props) => {
                 <Typography
                     id='searchCompTitle'
                     className={classNames(`${s.wireFrameBorderOne} ${s.searchCompTitle}`)}
+                    classes={{root:s.searchCompTitle}}
+                    
                 >FIND STORES</Typography>
                 {/* searchInput  */}
                 <form>
@@ -81,7 +83,11 @@ const SearchComp = (props) => {
                     </ButtonBase>
                     {/* mapButton */}
                     <ButtonBase
-                        className={classNames(`${s.wireFrameBorderOne} ${s.ButtonBase}`)}
+                        className={compShown.map?
+                            classNames(`${s.wireFrameBorderOne} ${s.ButtonBaseSelected}`)
+                            :
+                            classNames(`${s.wireFrameBorderOne} ${s.ButtonBase}`)
+                            }
                         onClick={(e)=>{
                             let compShownToSet = {
                                 list: false,
@@ -97,7 +103,11 @@ const SearchComp = (props) => {
                     </ButtonBase>
                     {/* filterButton */}
                     <ButtonBase
-                        className={classNames(`${s.wireFrameBorderOne} ${s.ButtonBase}`)}
+                        className={compShown.filter?
+                            classNames(`${s.wireFrameBorderOne} ${s.ButtonBaseSelected}`)
+                            :
+                            classNames(`${s.wireFrameBorderOne} ${s.ButtonBase}`)
+                            }
                         onClick={(e)=>{
                             let compShownToSet = {
                                 list: false,
