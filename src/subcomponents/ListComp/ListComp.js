@@ -3,6 +3,8 @@ import React, {useEffect, useState} from 'react';
 import {Grid,ButtonBase ,Typography} from '@material-ui/core'
 import classNames from 'classnames'
 import {ReactComponent as ArrowDown} from 'subcomponents/ListComp/arrow_down.svg'
+// functions
+import {useWidth} from 'subcomponents/SearchComp/SearchCompFunctions.js'
 // styles
 import listCompStyles from 'subcomponents/ListComp/listCompStyles.js'
 const ListComp = (props) => {
@@ -12,13 +14,18 @@ const ListComp = (props) => {
     } = props
     let s = listCompStyles()
     logger && console.log('results',results)
-
+    const [desktopView, setdesktopView] = useState(false)
+    let width = useWidth()
     useEffect(() => {
        
         return () => {
-       
+            if(width == 'xs' ||width == 'sm' ){
+                setdesktopView(false)
+            }else{
+                setdesktopView(true)
+            }
         }
-    }, [results])
+    }, [results,width,desktopView])
 
     return (
         <Grid
@@ -67,8 +74,46 @@ const ListComp = (props) => {
                         id={`address${index}`}
                         className={classNames(`${s.wireFrameBorderOne} ${s.addressContainer}`)}
                     ><Typography>{result.address}</Typography></Grid>
-                    
+                    {desktopView?
+                    <Grid>
+                        <Typography>{result.phone}</Typography>
+                        {/* sendToPhoneOrEmailContainer */}
+                        <ButtonBase><Typography variant='button' className={classNames(`${s.wireFrameBorderOne} ${s.sendToDeviceButton}`)}>Send To Phone</Typography></ButtonBase> | <ButtonBase><Typography variant='button' className={classNames(`${s.wireFrameBorderOne} ${s.sendToDeviceButton}`)}>Send To Email</Typography></ButtonBase>
+                    </Grid>
+                    :
+                    null
+                    }
                     {/* buttonsContainer */}
+                    {desktopView?
+                        <Grid
+                        id={`buttonsContainer${index}`}
+                        className={classNames(`${s.wireFrameBorderOne} ${s.buttonsContainer}`)}
+                    >
+                        {/* callAndGetDirections */}
+                        <Grid
+                            id={`callAndGetDirectionsContainer${index}`}
+                            className={classNames(`${s.wireFrameBorderOne} ${s.callAndGetDirectionsContainer}`)}
+                        >
+                            
+                            {/* call store */}
+                         
+                            <ButtonBase id={`callstoreButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{root:s.buttonText}} variant='button'>Call Store</Typography></ButtonBase>
+                            {/* get directions */}
+                            <ButtonBase id={`getDirectionsButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{root:s.buttonText}} variant='button'>Get Directions</Typography></ButtonBase>
+                        </Grid>
+                        {/* moreInfoButton */}
+                        <Grid
+                            id={`moreInfoButtonContainer${index}`}
+                        >
+                            <ButtonBase
+                                id={`moreInfoButton${index}`}
+                                className={classNames(`${s.wireFrameBorderOne} ${s.moreInfoButton}`)}
+                                
+                            ><Typography variant='button' classes={{root:s.buttonText}}>More Info</Typography></ButtonBase>
+                        </Grid>
+                    </Grid>
+                    :
+                    // buttonsContainerDesktop
                     <Grid
                         id={`buttonsContainer${index}`}
                         className={classNames(`${s.wireFrameBorderOne} ${s.buttonsContainer}`)}
@@ -96,6 +141,8 @@ const ListComp = (props) => {
                             ><Typography variant='button' classes={{root:s.buttonText}}>More Info</Typography></ButtonBase>
                         </Grid>
                     </Grid>
+                    }
+                    
 
                 </Grid>)
             })}

@@ -21,6 +21,7 @@ const FilterComp = (props) => {
     return (
         <Grid
             id='filterComponent'
+            className={classNames(`${s.wireFrameBorderOne} ${s.filterComponent}`)}
         >
             {filterOptions.map((filter, index) => {
                 logger && console.log('filter', filter)

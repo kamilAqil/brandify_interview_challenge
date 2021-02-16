@@ -24,7 +24,7 @@ const MapComp = (props) => {
 
     let s = mapCompStyles()
 
-    if(width == 'xs' || width == 'sm' || width == 'md'){
+    if(width == 'xs' || width == 'sm' ){
         return (
             <Grid
                 id='mapCompContainer'

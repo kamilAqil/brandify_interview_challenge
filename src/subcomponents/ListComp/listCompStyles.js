@@ -7,15 +7,36 @@ let listCompStyles = makeStyles((theme) => createStyles({
         [theme.breakpoints.up("xs")]: {
             width: '60%'
         },
-        [theme.breakpoints.up("sm")]: {},
+        [theme.breakpoints.up("sm")]: {
+            width: '40%'
+        },
         [theme.breakpoints.up("md")]: {
-            width: '25%'
+            // width: '25%',
+            marginBottom: '0%'
         },
         [theme.breakpoints.up("lg")]: {},
         marginBottom: '5%'
     },
     buttonsContainer: {
         marginBottom: '10%'
+    },
+    sendToDeviceButton : {
+        color : theme.palette.warm.main
+    },
+    listComp : {
+        [theme.breakpoints.up("xs")]: {
+        
+        },
+        [theme.breakpoints.up("sm")]: {
+         
+        },
+        [theme.breakpoints.up("md")]: {
+         position : 'relative',
+        //  top : '115px'
+        },
+        [theme.breakpoints.up("lg")]: {
+        
+        },
     },
     buttonText: {
         color: theme.palette.white.main,
@@ -96,15 +117,16 @@ let listCompStyles = makeStyles((theme) => createStyles({
     resultNameAndCity: {
         fontWeight: 'bold',
         whiteSpace: 'nowrap'
-    } // wireFrameBorderOne: {
-    //         border: `1px solid ${theme.palette.limeGreen.main}`
-    // },
-    // wireFrameBorderThree: {
-    //         border: `1px solid ${theme.palette.beetRed.main}`
-    // },
-    // wireFrameBorderTwo: {
-    //         border: `1px solid ${theme.palette.skyBlue.main}`
-    // }
+    },
+     wireFrameBorderOne: {
+            border: `1px solid ${theme.palette.limeGreen.main}`
+    },
+    wireFrameBorderThree: {
+            border: `1px solid ${theme.palette.beetRed.main}`
+    },
+    wireFrameBorderTwo: {
+            border: `1px solid ${theme.palette.skyBlue.main}`
+    }
 
 }))
 

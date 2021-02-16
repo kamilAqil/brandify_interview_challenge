@@ -10,8 +10,8 @@ let SearchCompStyles = makeStyles((theme) => createStyles({
         width: 'fit-content'
     },
     ButtonBaseSelected: {
-        fill : theme.palette.selected.main,
-        color : theme.palette.selected.main
+        color: theme.palette.selected.main,
+        fill: theme.palette.selected.main
     },
     buttonIcon: {
         fill: 'inherit',
@@ -22,43 +22,86 @@ let SearchCompStyles = makeStyles((theme) => createStyles({
     buttonsRow: {
         display: 'flex',
         justifyContent: 'space-evenly',
-        padding: '1%',
-        marginBottom : '2%',
-        marginTop : '2%'
+        marginBottom: '2%',
+        marginTop: '2%',
+        padding: '1%'
     },
-    SearchComp: {
-        // alignItems: 'center',
-        display: 'flex',
-        flexFlow: 'column',
-        borderBottom : `2px solid ${theme.palette.grey.main}`
+    filterByButton: {
+        position: 'relative',
+        right: '5%'
     },
-    searchCompTitle: {
-        alignSelf: 'center',
-        fontWeight : 'bold'
-    },
-    searchInput: {
-        border: `1px solid ${theme.palette.grey.main}`,
-        borderRadius: '0px',
-        padding: '2%',
-        width: '100%',
-        marginBottom : '2%',
-        marginTop : '2%',
-        "&&&:before": {
-            borderBottom: "none"
-          },
-          "&&:after": {
-            borderBottom: "none"
-          }
-    },
-    // wireFrameBorderOne: {
-    //     border: `1px solid ${theme.palette.limeGreen.main}`
+    inputAndFilter: {
+        [theme.breakpoints.up("xs")]: {},
+        [theme.breakpoints.up("sm")]: {},
+        [theme.breakpoints.up("md")]: {
+            justifyContent: 'space-between'
+        },
+        [theme.breakpoints.up("lg")]: {},
+        display: 'flex'
+    } // wireFrameBorderOne: {
+    //         border: `1px solid ${theme.palette.limeGreen.main}`
     // },
     // wireFrameBorderThree: {
-    //     border: `1px solid ${theme.palette.beetRed.main}`
+    //         border: `1px solid ${theme.palette.beetRed.main}`
     // },
     // wireFrameBorderTwo: {
-    //     border: `1px solid ${theme.palette.skyBlue.main}`
+    //         border: `1px solid ${theme.palette.skyBlue.main}`
     // }
+    ,
+    SearchComp: {
+        [theme.breakpoints.up("xs")]: {},
+        [theme.breakpoints.up("sm")]: {},
+        [theme.breakpoints.up("md")]: {
+            backgroundColor: theme.palette.white.main,
+            display: 'flex',
+            flexFlow: 'column',
+            height: '110px',
+            justifyContent: 'space-evenly',
+            position: 'fixed',
+            width: 'inherit',
+            zIndex: '2'
+        },
+        [theme.breakpoints.up("lg")]: {},
+        borderBottom: `2px solid ${theme.palette.grey.main}`,
+        // alignItems: 'center',
+        display: 'flex',
+        flexFlow: 'column'
+    },
+    searchCompTitle: {
+        [theme.breakpoints.up("xs")]: {},
+        [theme.breakpoints.up("sm")]: {},
+        [theme.breakpoints.up("md")]: {
+            alignSelf: 'flex-start'
+        },
+        [theme.breakpoints.up("lg")]: {},
+        alignSelf: 'center',
+        fontWeight: 'bold'
+    },
+    searchForm: {
+        height: '',
+        width: '60%'
+    },
+    searchInput: {
+        [theme.breakpoints.up("xs")]: {},
+        [theme.breakpoints.up("sm")]: {},
+        [theme.breakpoints.up("md")]: {
+            height: '',
+            width: '100%'
+        },
+        [theme.breakpoints.up("lg")]: {},
+        "&&:after": {
+            borderBottom: "none"
+        },
+        "&&&:before": {
+            borderBottom: "none"
+        },
+        border: `1px solid ${theme.palette.grey.main}`,
+        borderRadius: '0px',
+        marginBottom: '2%',
+        marginTop: '2%',
+        padding: '2%',
+        width: '100%'
+    }
 }))
 
 
