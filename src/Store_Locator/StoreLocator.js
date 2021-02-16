@@ -61,64 +61,88 @@ const StoreLocator = (props) => {
         {
             name : 'Warehouse Shoe Sale',
             city : 'Anaheim',
-            address : '2114 East Lincoln Ave Anaheim, Ca, 92806',
-            distance : '1.75km',
-            relevance : 'warm',
+            address : '100 East Washington Ave, Ca, 92806',
+            street : '100 East Washington Ave',
+            state : 'Ca',
+            zip : '92806',
+            distance : '1.75 miles',
+            relevance : 'superWarm',
             phone : '555-555-5555'
         },
         {
             name : 'Shoeteria',
             city : 'Anaheim',
+            street : '1922 West Lincoln Ave',
+            state : 'Ca',
+            zip : '92806',
             address : '1922 West Lincoln Ave Anaheim, Ca, 92806',
-            distance : '2.75km',
+            distance : '2.75 miles',
             relevance : 'warmer',
             phone : '555-555-5555'
         },
         {
             name : 'Shoeteria',
             city : 'Anaheim',
+            street : '2114 East Lincoln Ave Anaheim',
+            state : 'Ca',
+            zip : '92806',
             address : '2114 East Lincoln Ave Anaheim, Ca, 92806',
-            distance : '3.75km',
+            distance : '3.75 miles',
             relevance : 'warmest',
             phone : '555-555-5555'
         },
         {
             name : 'Warehouse Shoe Sale',
             city : 'Anaheim',
+            street : '3564 Capitol Avenue Anaheim',
+            state : 'Ca',
+            zip : '92806',
             address : '3564 Capitol Avenue Anaheim, Ca, 92806',
-            distance : '4.75km',
+            distance : '4.75 miles',
             relevance : 'warm',
             phone : '555-555-5555'
         },
         {
             name : 'Warehouse Shoe Sale',
             city : 'Anaheim',
-            address : '3355 George Avenue Anaheim, Ca, 92806',
-            distance : '5.75km',
+            street : '3355 George Avenue',
+            state : 'Anaheim',
+            zip : '92806',
+            address : '3355 George Avenue Anaheim, Anaheim, 92806',
+            distance : '5.75 miles',
             relevance : 'warmer',
             phone : '555-555-5555'
         },
         {
             name : 'Shoeteria',
             city : 'Anaheim',
+            street : '371 Pine Tree Lane Anaheim',
+            state : 'Ca',
+            zip : '92806',
             address : '371 Pine Tree Lane Anaheim, Ca, 92806',
-            distance : '6.75km',
+            distance : '6.75 miles',
             relevance : 'warmest',
             phone : '555-555-5555'
         },
         {
             name : 'Warehouse Shoe Sale',
             city : 'Anaheim',
+            street : '548 Hill Haven Drive Anaheim',
+            state : 'Ca',
+            zip : '92806',
             address : '548 Hill Haven Drive Anaheim, Ca, 92806',
-            distance : '7.75km',
+            distance : '7.75 miles',
             relevance : 'warm',
             phone : '555-555-5555'
         },
         {
             name : 'Warehouse Shoe Sale',
             city : 'Anaheim',
+            street : '1743  Wilkinson Court Anaheim',
+            state : 'Ca',
+            zip : '92806',
             address : '1743  Wilkinson Court Anaheim, Ca, 92806',
-            distance : '8.75km',
+            distance : '8.75 miles',
             relevance : 'warmer',
             phone : '555-555-5555'
         }
@@ -165,17 +189,17 @@ const StoreLocator = (props) => {
                     className={classNames(`${s.wireFrameBorderOne} ${s.rightCol}`)}
                 >
                     {/* search */}
-                    <SearchComp compShown={compShown} setcompShown={setcompShown} showFilterOptions={showFilterOptions} setshowFilterOptions={setshowFilterOptions}/>
+                    <SearchComp filterOptions={filterOptions} setfilterOptions={setfilterOptions}  compShown={compShown} setcompShown={setcompShown} showFilterOptions={showFilterOptions} setshowFilterOptions={setshowFilterOptions}/>
                     {/* resultsContainerDesktop */}
                     <Grid
                         id='resultsContainerDesktop'
                         className={classNames(`${s.wireFrameBorderOne} ${s.resultsContainerDesktop}`)}
                     >
-                        {showFilterOptions?
+                        {/* {showFilterOptions?
                         <FilterComp filterOptions={filterOptions} setfilterOptions={setfilterOptions} />
                         :
                         null
-                    }
+                        } */}
                     {/* listComponent */}
                     <ListComp results={results}  />
                     </Grid>

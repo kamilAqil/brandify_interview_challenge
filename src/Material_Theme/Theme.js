@@ -3,7 +3,7 @@ import {createMuiTheme} from '@material-ui/core/styles'
 
 
 const theme = createMuiTheme({
-    fontFamily: 'Raleway, Arial',
+    fontFamily: 'Ubuntu',
     palette : {
         limeGreen : {
             main : '#992B2B'
@@ -25,6 +25,9 @@ const theme = createMuiTheme({
         },
         warmest : {
             main : '#EF7624'
+        },
+        superWarm : {
+            main : '#9F5E02'
         },
         selected : {
             main : '#DF8900'

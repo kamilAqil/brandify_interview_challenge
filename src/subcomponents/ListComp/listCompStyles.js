@@ -17,11 +17,30 @@ let listCompStyles = makeStyles((theme) => createStyles({
         [theme.breakpoints.up("lg")]: {},
         marginBottom: '5%'
     },
+    addressCSZContainer : {
+        display : 'flex'
+    },
+    addressDataContainer : {},
+    resultDistance : {
+        whiteSpace : 'nowrap'
+    },
     buttonsContainer: {
-        marginBottom: '10%'
+        marginBottom: '10%',
+        [theme.breakpoints.up("xs")]: {
+        
+        },
+        [theme.breakpoints.up("sm")]: {
+         
+        },
+        [theme.breakpoints.up("md")]: {
+            marginBottom: '0',
+        },
+        [theme.breakpoints.up("lg")]: {
+        
+        },
     },
     sendToDeviceButton : {
-        color : theme.palette.warm.main
+        color : theme.palette.warmer.main
     },
     listComp : {
         [theme.breakpoints.up("xs")]: {
@@ -78,6 +97,15 @@ let listCompStyles = makeStyles((theme) => createStyles({
         height: '100%',
         width: '100%'
     },
+    viewStoreButton : {
+        backgroundColor: theme.palette.warmer.main,
+        // boxShadow : '0px 2px 2px rgba(0, 0, 0, 0.8)',
+        borderRadius: '0',
+        color: theme.palette.white.main,
+        height: '100%',
+        width: '100%',
+        marginBottom : '5%'
+    },
     nameAndCityContainer: {
         [theme.breakpoints.up("xs")]: {
             width: '60%'
@@ -107,6 +135,9 @@ let listCompStyles = makeStyles((theme) => createStyles({
         fontWeight: 'bold',
         position: 'absolute'
     },
+    colorSuperWarmer : {
+        fill : theme.palette.superWarm.main
+    },
     resultIndexContainer: {
         display: 'flex',
         flexFlow: 'row',
@@ -118,15 +149,15 @@ let listCompStyles = makeStyles((theme) => createStyles({
         fontWeight: 'bold',
         whiteSpace: 'nowrap'
     },
-     wireFrameBorderOne: {
-            border: `1px solid ${theme.palette.limeGreen.main}`
-    },
-    wireFrameBorderThree: {
-            border: `1px solid ${theme.palette.beetRed.main}`
-    },
-    wireFrameBorderTwo: {
-            border: `1px solid ${theme.palette.skyBlue.main}`
-    }
+    //  wireFrameBorderOne: {
+    //         border: `1px solid ${theme.palette.limeGreen.main}`
+    // },
+    // wireFrameBorderThree: {
+    //         border: `1px solid ${theme.palette.beetRed.main}`
+    // },
+    // wireFrameBorderTwo: {
+    //         border: `1px solid ${theme.palette.skyBlue.main}`
+    // }
 
 }))
 

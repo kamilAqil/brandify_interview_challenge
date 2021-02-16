@@ -28,7 +28,9 @@ let SearchCompStyles = makeStyles((theme) => createStyles({
     },
     filterByButton: {
         position: 'relative',
-        right: '5%'
+        right: '5%',
+        color : theme.palette.grey.main,
+        fontWeight : 'bold'
     },
     inputAndFilter: {
         [theme.breakpoints.up("xs")]: {},
@@ -38,16 +40,7 @@ let SearchCompStyles = makeStyles((theme) => createStyles({
         },
         [theme.breakpoints.up("lg")]: {},
         display: 'flex'
-    } // wireFrameBorderOne: {
-    //         border: `1px solid ${theme.palette.limeGreen.main}`
-    // },
-    // wireFrameBorderThree: {
-    //         border: `1px solid ${theme.palette.beetRed.main}`
-    // },
-    // wireFrameBorderTwo: {
-    //         border: `1px solid ${theme.palette.skyBlue.main}`
-    // }
-    ,
+    },
     SearchComp: {
         [theme.breakpoints.up("xs")]: {},
         [theme.breakpoints.up("sm")]: {},
@@ -55,8 +48,9 @@ let SearchCompStyles = makeStyles((theme) => createStyles({
             backgroundColor: theme.palette.white.main,
             display: 'flex',
             flexFlow: 'column',
-            height: '110px',
+            height: 'fit-content',
             justifyContent: 'space-evenly',
+            minHeight: '110px',
             position: 'fixed',
             width: 'inherit',
             zIndex: '2'
@@ -66,6 +60,9 @@ let SearchCompStyles = makeStyles((theme) => createStyles({
         // alignItems: 'center',
         display: 'flex',
         flexFlow: 'column'
+    },
+    filterButton : {
+        color : theme.palette.grey
     },
     searchCompTitle: {
         [theme.breakpoints.up("xs")]: {},
@@ -101,7 +98,16 @@ let SearchCompStyles = makeStyles((theme) => createStyles({
         marginTop: '2%',
         padding: '2%',
         width: '100%'
-    }
+    },
+    // wireFrameBorderOne: {
+    //     border: `1px solid ${theme.palette.limeGreen.main}`
+    // },
+    // wireFrameBorderThree: {
+    //     border: `1px solid ${theme.palette.beetRed.main}`
+    // },
+    // wireFrameBorderTwo: {
+    //     border: `1px solid ${theme.palette.skyBlue.main}`
+    // }
 }))
 
 

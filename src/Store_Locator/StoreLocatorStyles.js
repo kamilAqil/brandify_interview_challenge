@@ -30,7 +30,8 @@ let StoreLocatorStyles = makeStyles((theme) => createStyles({
         paddingRight : '1%',
         paddingLeft : '1%',
         overflow : 'scroll',
-        position : 'relative'
+        position : 'relative',
+        backgroundColor : theme.palette.white.main
     },
     resultsContainerDesktop : {
         top : '115px',

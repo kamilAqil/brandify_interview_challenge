@@ -13,7 +13,8 @@ import { ReactComponent as FilterIcon } from 'subcomponents/SearchComp/icons/fil
 
 import { ReactComponent as ListIcon } from "subcomponents/SearchComp/icons/list.svg"
 import { ReactComponent as MapIcon } from 'subcomponents/SearchComp/icons/map.svg'
-
+// subcomponents 
+import FilterComp from 'subcomponents/FilterComp/FilterComp.js'
 const SearchComp = (props) => {
 
     let s = SearchCompStyles()
@@ -23,7 +24,9 @@ const SearchComp = (props) => {
         compShown,
         setcompShown,
         showFilterOptions,
-        setshowFilterOptions
+        setshowFilterOptions,
+        filterOptions,
+        setfilterOptions
     } = props
 
 
@@ -166,9 +169,13 @@ const SearchComp = (props) => {
                         }else{
                             setshowFilterOptions(false)
                         }
-                    }} ><Typography variant='button'>Filter By -</Typography></ButtonBase>
+                    }} ><Typography className={classNames(`${s.wireFrameBorderOne} ${s.filterButton}`)} variant='button'>{showFilterOptions?'Filter By -':'Filter By +'}</Typography></ButtonBase>
                 </Grid>
-
+                {showFilterOptions?
+                        <FilterComp filterOptions={filterOptions} setfilterOptions={setfilterOptions} />
+                        :
+                        null
+                        }    
             </Grid>
         )
     }

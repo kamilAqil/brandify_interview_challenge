@@ -13,28 +13,33 @@ const ListComp = (props) => {
         results
     } = props
     let s = listCompStyles()
-    logger && console.log('results',results)
+    logger && console.log('results', results)
     const [desktopView, setdesktopView] = useState(false)
     let width = useWidth()
     useEffect(() => {
-       
-        return () => {
-            if(width == 'xs' ||width == 'sm' ){
-                setdesktopView(false)
-            }else{
-                setdesktopView(true)
-            }
+
+        if (width == 'xs' || width == 'sm' ) {
+            setdesktopView(false)
+        } else {
+            setdesktopView(true)
         }
-    }, [results,width,desktopView])
+
+
+        return () => {
+           
+        }
+    }, [results,desktopView,width])
+
+    logger && console.log('desktopView in list comp',desktopView)
 
     return (
         <Grid
             id='listComp'
             className={classNames(`${s.wireFrameBorderTwo} ${s.listComp}`)}
         >
-            {results.map((result,index)=>{
-                {index += 1}
-                return(<Grid
+            {results.map((result, index) => {
+                { index += 1 }
+                return (<Grid
                     id={`resultContainer${index}`}
                     className={classNames(`${s.wireFrameBorderTwo} ${s.resultContainer}`)}
                 >
@@ -49,100 +54,146 @@ const ListComp = (props) => {
                             className={classNames(`${s.wireFrameBorderTwo} ${s.resultIndexContainer}`)}
                         >
                             <ArrowDown id={`indexArrowDown${index}`} className={
-                            result.relevance === 'warm'?
-                            classNames(`${s.wireFrameBorderOne} ${s.indexArrowDown} ${s.colorWarm}`)
-                            :
-                            result.relevance === 'warmer'?
-                            classNames(`${s.wireFrameBorderOne} ${s.indexArrowDown} ${s.colorWarmer}`)
-                            :
-                            classNames(`${s.wireFrameBorderOne} ${s.indexArrowDown} ${s.colorWarmest}`)
-                        }/>
-                            <Typography id={`resultIndex${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultIndex}`)} classes={{root:s.resultIndex}} >{index}</Typography>
+                                result.relevance === 'warm' ?
+                                    classNames(`${s.wireFrameBorderOne} ${s.indexArrowDown} ${s.colorWarm}`)
+                                    :
+                                    result.relevance === 'warmer' ?
+                                        classNames(`${s.wireFrameBorderOne} ${s.indexArrowDown} ${s.colorWarmer}`)
+                                        :
+                                        result.relevance ==='superWarm'?
+                                        classNames(`${s.wireFrameBorderOne} ${s.indexArrowDown} ${s.colorSuperWarmer}`)
+                                        :
+                                        classNames(`${s.wireFrameBorderOne} ${s.indexArrowDown} ${s.colorWarmest}`)
+                            } />
+                            <Typography id={`resultIndex${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultIndex}`)} classes={{ root: s.resultIndex }} >{index}</Typography>
                         </Grid>
                         {/* distance */}
-                        <Typography>{result.distance} away</Typography>
+                        <Typography variant='caption' id={`resultDistance${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultDistance}`)}>{result.distance} away</Typography>
                     </Grid>
                     {/* nameAndCity */}
                     <Grid
                         id={`nameAndCityContainer${index}`}
                         className={classNames(`${s.wireFrameBorderOne} ${s.nameAndCityContainer}`)}
                     >
-                        <Typography variant='subtitle1' id={`resultNameAndCity${index}`} className={classNames(`${s.wireFrameBorderOne}`)} classes={{root:s.resultNameAndCity}}>{result.name} - {result.city}</Typography>
+                        <Typography variant='subtitle1' id={`resultNameAndCity${index}`} className={classNames(`${s.wireFrameBorderOne}`)} classes={{ root: s.resultNameAndCity }}>{result.name} - {result.city}</Typography>
                     </Grid>
                     {/* Address */}
                     <Grid
                         id={`address${index}`}
                         className={classNames(`${s.wireFrameBorderOne} ${s.addressContainer}`)}
-                    ><Typography>{result.address}</Typography></Grid>
-                    {desktopView?
-                    <Grid>
-                        <Typography>{result.phone}</Typography>
-                        {/* sendToPhoneOrEmailContainer */}
-                        <ButtonBase><Typography variant='button' className={classNames(`${s.wireFrameBorderOne} ${s.sendToDeviceButton}`)}>Send To Phone</Typography></ButtonBase> | <ButtonBase><Typography variant='button' className={classNames(`${s.wireFrameBorderOne} ${s.sendToDeviceButton}`)}>Send To Email</Typography></ButtonBase>
+                    >
+                        <Grid className={classNames(`${s.wireFrameBorderOne} ${s.addressStreetContainer}`)}>
+                            {/* street */}
+                            <Typography className={classNames(`${s.wireFrameBorderOne}`)} varian='body'>{result.street}</Typography>
+                        </Grid>
+                        <Grid className={classNames(`${s.wireFrameBorderOne} ${s.addressCSZContainer}`)}>
+                            {/* city */}
+                            <Typography className={classNames(`${s.wireFrameBorderOne}`)} varian='body'>{result.city},</Typography>
+                            {/* state */}
+                            <Typography className={classNames(`${s.wireFrameBorderOne}`)} varian='body'>{result.state},</Typography>
+                            {/* zip */}
+                            <Typography className={classNames(`${s.wireFrameBorderOne}`)} varian='body'>{result.zip}</Typography>
+                        </Grid>
+                        
                     </Grid>
-                    :
-                    null
+                    {desktopView ?
+                        <Grid>
+                            <Typography>{result.phone}</Typography>
+                            {/* sendToPhoneOrEmailContainer */}
+                            <ButtonBase><Typography variant='button' className={classNames(`${s.wireFrameBorderOne} ${s.sendToDeviceButton}`)}>Send To Phone</Typography></ButtonBase> | <ButtonBase><Typography variant='button' className={classNames(`${s.wireFrameBorderOne} ${s.sendToDeviceButton}`)}>Send To Email</Typography></ButtonBase>
+                        </Grid>
+                        :
+                        null
                     }
                     {/* buttonsContainer */}
-                    {desktopView?
+                    {desktopView ?
                         <Grid
-                        id={`buttonsContainer${index}`}
-                        className={classNames(`${s.wireFrameBorderOne} ${s.buttonsContainer}`)}
-                    >
-                        {/* callAndGetDirections */}
-                        <Grid
-                            id={`callAndGetDirectionsContainer${index}`}
-                            className={classNames(`${s.wireFrameBorderOne} ${s.callAndGetDirectionsContainer}`)}
+                            id={`buttonsContainer${index}`}
+                            className={classNames(`${s.wireFrameBorderOne} ${s.buttonsContainer}`)}
                         >
-                            
-                            {/* call store */}
-                         
-                            <ButtonBase id={`callstoreButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{root:s.buttonText}} variant='button'>Call Store</Typography></ButtonBase>
-                            {/* get directions */}
-                            <ButtonBase id={`getDirectionsButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{root:s.buttonText}} variant='button'>Get Directions</Typography></ButtonBase>
+                            {/* callAndGetDirections */}
+                            <Grid
+                                id={`callAndGetDirectionsContainer${index}`}
+                                className={classNames(`${s.wireFrameBorderOne} ${s.callAndGetDirectionsContainer}`)}
+                            >
+
+                                {/* call store */}
+                                {!desktopView ?
+                                    <ButtonBase id={`callstoreButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{ root: s.buttonText }} variant='button'>Call Store</Typography></ButtonBase>
+                                    :
+                                    <ButtonBase id={`callstoreButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{ root: s.buttonText }} variant='button'>Get Directions</Typography></ButtonBase>
+                                }
+
+                                {/* get directions */}
+                                {desktopView ?
+                                    <ButtonBase id={`getDirectionsButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{ root: s.buttonText }} variant='button'>More Info</Typography></ButtonBase>
+                                    :
+                                    <ButtonBase id={`getDirectionsButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{ root: s.buttonText }} variant='button'>Get Directions</Typography></ButtonBase>
+                                }
+                                {/* <ButtonBase id={`getDirectionsButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{root:s.buttonText}} variant='button'>Get Directions</Typography></ButtonBase> */}
+                            </Grid>
+                            {/* moreInfoButton */}
+                            {!desktopView ?
+                                <Grid
+                                    id={`moreInfoButtonContainer${index}`}
+                                >
+                                    <ButtonBase
+                                        id={`moreInfoButton${index}`}
+                                        className={classNames(`${s.wireFrameBorderOne} ${s.moreInfoButton}`)}
+
+                                    ><Typography variant='button' classes={{ root: s.buttonText }}>More Info</Typography></ButtonBase>
+                                </Grid>
+                                :
+                                index == 1 ?
+                                <Grid
+                                    id={`viewStoreButton${index}`}
+                                >
+                                    <ButtonBase
+                                        id={`viewStoreButton${index}`}
+                                        className={classNames(`${s.wireFrameBorderOne} ${s.viewStoreButton}`)}
+
+                                    ><Typography variant='button' classes={{ root: s.buttonText }}>View Store Page</Typography></ButtonBase>
+                                </Grid>
+                                :
+                                null
+                            }
                         </Grid>
-                        {/* moreInfoButton */}
+                        :
+                        // buttonsContainerDesktop
                         <Grid
-                            id={`moreInfoButtonContainer${index}`}
+                            id={`buttonsContainer${index}`}
+                            className={classNames(`${s.wireFrameBorderOne} ${s.buttonsContainer}`)}
                         >
-                            <ButtonBase
-                                id={`moreInfoButton${index}`}
-                                className={classNames(`${s.wireFrameBorderOne} ${s.moreInfoButton}`)}
-                                
-                            ><Typography variant='button' classes={{root:s.buttonText}}>More Info</Typography></ButtonBase>
+                            {/* callAndGetDirections */}
+                            <Grid
+                                id={`callAndGetDirectionsContainer${index}`}
+                                className={classNames(`${s.wireFrameBorderOne} ${s.callAndGetDirectionsContainer}`)}
+                            >
+
+                                {/* call store */}
+
+                                <ButtonBase id={`callstoreButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{ root: s.buttonText }} variant='button'>Call Store</Typography></ButtonBase>
+                                {/* get directions */}
+                                <ButtonBase id={`getDirectionsButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{ root: s.buttonText }} variant='button'>Get Directions</Typography></ButtonBase>
+                            </Grid>
+                            {/* moreInfoButton */}
+                            {!desktopView ?
+                                <Grid
+                                    id={`moreInfoButtonContainer${index}`}
+                                >
+                                    <ButtonBase
+                                        id={`moreInfoButton${index}`}
+                                        className={classNames(`${s.wireFrameBorderOne} ${s.moreInfoButton}`)}
+
+                                    ><Typography variant='button' classes={{ root: s.buttonText }}>More Info</Typography></ButtonBase>
+                                </Grid>
+                                :
+                                null
+                            }
+
                         </Grid>
-                    </Grid>
-                    :
-                    // buttonsContainerDesktop
-                    <Grid
-                        id={`buttonsContainer${index}`}
-                        className={classNames(`${s.wireFrameBorderOne} ${s.buttonsContainer}`)}
-                    >
-                        {/* callAndGetDirections */}
-                        <Grid
-                            id={`callAndGetDirectionsContainer${index}`}
-                            className={classNames(`${s.wireFrameBorderOne} ${s.callAndGetDirectionsContainer}`)}
-                        >
-                            
-                            {/* call store */}
-                         
-                            <ButtonBase id={`callstoreButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{root:s.buttonText}} variant='button'>Call Store</Typography></ButtonBase>
-                            {/* get directions */}
-                            <ButtonBase id={`getDirectionsButton${index}`} className={classNames(`${s.wireFrameBorderOne} ${s.resultButton}`)}><Typography classes={{root:s.buttonText}} variant='button'>Get Directions</Typography></ButtonBase>
-                        </Grid>
-                        {/* moreInfoButton */}
-                        <Grid
-                            id={`moreInfoButtonContainer${index}`}
-                        >
-                            <ButtonBase
-                                id={`moreInfoButton${index}`}
-                                className={classNames(`${s.wireFrameBorderOne} ${s.moreInfoButton}`)}
-                                
-                            ><Typography variant='button' classes={{root:s.buttonText}}>More Info</Typography></ButtonBase>
-                        </Grid>
-                    </Grid>
                     }
-                    
+
 
                 </Grid>)
             })}
